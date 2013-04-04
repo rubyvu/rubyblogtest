@@ -1,0 +1,15 @@
+~ form_for @blog do |f|
+  .row= render "shared/errors"
+  .row
+    .label Category
+    = f.select :category_id, options_from_collection_for_select(Category.all, :id, :name, f.object.category_id.to_s), prompt: "Select Category.."
+  .row
+    .label Title
+    = f.text_field :title
+  .row
+    .label Description
+    = f.text_area :content
+  .row
+    .label Published
+    = f.check_box :published
+  .row=f.submit

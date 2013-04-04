@@ -1,0 +1,9 @@
+~ form_for @category do |f|
+  .row= render "shared/errors"
+  .row
+    .label Name
+    = f.text_field :name
+  .row
+    .label Description
+    = f.text_area :description
+  .row=f.submit

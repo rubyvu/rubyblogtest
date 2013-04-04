@@ -1,0 +1,20 @@
+%p
+  = link_to "Create Blog", new_blog_path
+%h2 Pulished Blogs
+
+%ul
+  - @blogs.each do |blog|
+    %li
+      = link_to blog.title, blog_path(blog)
+      = link_to 'edit', edit_blog_path(blog)
+      = " | "
+      = link_to 'delete', blog_path(blog), method: :delete
+
+%h2 Pulished Blogs
+%ul
+  - @un_published_blogs.each do |blog|
+    %li
+      = link_to blog.title, blog_path(blog)
+      = link_to 'edit', edit_blog_path(blog)
+      = " | "
+      = link_to 'delete', blog_path(blog), method: :delete
