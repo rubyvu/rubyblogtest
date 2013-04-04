@@ -10,6 +10,16 @@ class BlogsController < ApplicationController
     end
   end
 
+  def create_comment
+    @blog = Blog.find(params[:id])
+    if @blog.update_attributes params[:blog]
+      redirect_to blog_path(@blog)
+    else
+      flash[:notice] = @blog.errors.full_messages.join(", ")
+      render :show
+    end
+  end
+
   def destroy
     @blog = Blog.find params[:id]
     @blog.destroy

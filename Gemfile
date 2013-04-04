@@ -4,6 +4,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'mysql2'
+gem 'nested_form'
 gem 'rails', '3.2.11'
 
 group :assets do

@@ -2,7 +2,11 @@ TestBlog::Application.routes.draw do
   get "home/index"
 
   resources :categories
-  resources :blogs
+  resources :blogs do
+    collection do
+      put :create_comment
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   root :to => 'home#index'
   # The priority is based upon order of creation:

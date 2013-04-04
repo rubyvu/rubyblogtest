@@ -1,3 +1,19 @@
 %p
-	%strong= @blog.title
-%p= @blog.content
+  %strong= @blog.title
+%p= @blog.content.html_safe unless @blog.content.blank?
+
+%h3 Comments
+- @blog.comments.each do |comment|
+  %p
+    = comment.content
+    %br
+    %small Created by: #{comment.user ? comment.user.email : "Guest"}
+
+
+= nested_form_for @blog, url: create_comment_blogs_path(id: @blog.id) do |f|
+  - @comment = @blog.comments.build
+  = f.fields_for :comments, @comment do |cf|
+    - if current_user
+      = cf.hidden_field :user_id, value: current_user.id
+    = cf.text_area :content, style: "height: 100px;"
+  = f.submit "Send"
