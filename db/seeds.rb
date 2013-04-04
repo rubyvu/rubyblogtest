@@ -10,3 +10,9 @@ user.password='password'
 user.password_confirmation='password'
 user.role='admin'
 user.save
+
+user1 = User.find_or_create_by_email("client@testblog.st")
+user1.password='password'
+user1.password_confirmation='password'
+user1.role='client'
+user1.save
