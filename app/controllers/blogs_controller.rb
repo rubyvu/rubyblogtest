@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-
+  before_filter :authenticate_admin!, except: [:index, :show]
   def create
     @blog = Blog.new(params[:blog])
     if @blog.save

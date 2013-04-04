@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  
+  before_filter :authenticate_admin!, except: [:index, :show]
   def create
     @category = Category.new(params[:category])
     if @category.save

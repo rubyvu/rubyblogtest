@@ -1,0 +1,12 @@
+%h3 Log in
+
+~ form_tag sessions_path do
+  .row
+    = render partial: "shared/errors"
+  .row
+    .label Email
+    = text_field_tag :email, params[:email]
+  .row
+    .label Password
+    = password_field_tag :password
+  .row= submit_tag "Log in"
