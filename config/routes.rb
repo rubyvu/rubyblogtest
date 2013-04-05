@@ -8,6 +8,22 @@ TestBlog::Application.routes.draw do
     end
   end
   resources :sessions, only: [:new, :create, :destroy]
+
+  namespace :api do
+
+    resources :sessions, only: [:create] do
+      collection do
+        post :logout
+      end
+    end
+
+    resources :categories, only: [:index]
+    resources :blogs, only: [:index, :show] do
+      member do
+        post :create_comment
+      end
+    end
+  end
   root :to => 'home#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
