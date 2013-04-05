@@ -24,8 +24,7 @@ class Api::BlogsController < Api::BaseController
     end
     hash = {
               status: 200,
-              blogs: blogs_arr,
-              message: "Sign in successfully."
+              blogs: blogs_arr
     }
     render json: hash
   end
